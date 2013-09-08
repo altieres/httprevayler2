@@ -1,0 +1,5 @@
+third sample
+packaging refactoring
+logging refactoring
+refactor MethodNotAllowedException, use reflection?
+verify static/transient behaviour on serialization

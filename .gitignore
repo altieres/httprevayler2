@@ -1,0 +1,8 @@
+.byke/
+.groovy/
+.metadata/
+.settings/
+*.class
+bin
+Prevalence/
+

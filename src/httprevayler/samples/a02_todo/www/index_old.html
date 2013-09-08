@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Prevalent Todo List</title>
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+		<style type="text/css">
+			body {
+				position: relative;
+				padding-top: 40px;
+			}
+		</style>
+    </head>
+	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<a class="brand">Prevalent Todo List</a>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">&nbsp</div>
+			<form id="form-todo" class="form-inline">
+				<fieldset>
+					<div class="input-append">
+						<input type="text" id="input-description" class="input-large" placeholder="description" />
+						<input type="submit" id="btn-add" class="btn btn-primary" value="add" />
+					</div>
+				</fieldset>
+			</form>
+			<table class="table table-striped">
+				<tbody id="list-items" class="sortable"></tbody>
+			</table>
+		</div>
+	</body>
+	<script type="text/javascript" src="/js/jquery-min.js"></script>
+	<script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/js/jquery-myext.js"></script>
+	<script type="text/javascript" src="/js/httprevayller-todo.js"></script>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Prevalent Todo List</title>
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+		<style type="text/css">
+			body {
+				position: relative;
+				padding-top: 40px;
+			}
+		</style>
+    </head>
+	<body>
+		
+		<script type="text/html" type="text/x-handlebars-template" id="item-template">
+			<td class="span1">{{ id }}</td>
+			<td class="span1">{{ counter }}</td>
+			<td>{{ description }}</td>
+			<td class="span1">
+				<a href="javascript:void(0)" class="item-delete btn btn-mini btn-danger">delete</a>
+			</td>
+		</script>
+		
+		<script type="text/html" type="text/x-handlebars-template" id="item-add-template">
+			<input type="text" id="input-description" class="input-large" placeholder="description" />
+			<input type="submit" id="btn-add" class="btn btn-primary" value="add" />
+		</script>
+		
+		
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<a class="brand">Prevalent Todo List</a>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">&nbsp</div>
+			<div class="input-append" id="item-add">
+			</div>
+			<table class="table table-striped" id="items-table">
+				<!-- <tbody id="list-items" class="sortable"></tbody> -->
+			</table>
+		</div>
+	</body>
+
+	<script type="text/javascript" src="/js/jquery-min.js"></script>
+	<script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/js/jquery-myext.js"></script>
+	<script type="text/javascript" src="/js/backbone.marionette/underscore.js"></script>
+	<script type="text/javascript" src="/js/backbone.marionette/backbone.js"></script>
+	<script type="text/javascript" src="/js/backbone.marionette/backbone.marionette.min.js"></script>
+	<script type="text/javascript" src="/js/handlebars.js"></script>
+	<script type="text/javascript" src="/js/handlebars.marionette.js"></script>
+	
+	<script type="text/javascript" src="/js/httprevayller-todo-marionette.js"></script>
+	<script type="text/javascript">
+		TodoApp.start();
+	</script>
+	
+</html>
