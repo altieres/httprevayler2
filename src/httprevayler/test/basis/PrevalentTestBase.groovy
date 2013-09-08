@@ -16,8 +16,10 @@ class PrevalentTestBase {
 	}
 	
 	protected void clearServerData() {
-		for(File journal : new File("Prevalence").listFiles())
+		def prevalenceFolder = new File("Prevalence")
+		for(File journal : prevalenceFolder.listFiles())
 			journal.delete()
+		prevalenceFolder.delete()
 	}
 	
 }
