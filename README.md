@@ -8,7 +8,7 @@ A Jetty server is embeded to do the Http job. The prevalence is provided by Prev
 
 This is the simplest server (listening at localhost on port 8484) you can create:
 
-```
+```groovy
 class MyServer {
 	static void main(String[] args) {
 		PrevalentServer server = new PrevalentServer(8484);
@@ -17,7 +17,7 @@ class MyServer {
 }
 ```
 
-```
+```groovy
 class MyResource extends SimpleResource {
 	def doGet() {
 		'hello!'
@@ -35,7 +35,7 @@ curl localhost:8484
 
 The startRunning method receives two parameters: the root of domain models tree and a SimpleResource.
 
-```
+```groovy
 class MessagesServer {
 	static void main(String[] args) {
 		PrevalentServer server = new PrevalentServer(8484);
@@ -44,13 +44,13 @@ class MessagesServer {
 }
 ```
 
-```
+```groovy
 class MessagesApp {
 	def messages = []
 }
 ```
 
-```
+```groovy
 class MessagesResource extends SimpleResource {
 	def doGet() {
 		domain.messages
@@ -78,7 +78,7 @@ It just works, like a magick ;-)
 
 If more than one Resource is needed, it is necessary to use a router. As a SimpleRouter is a SimpleResource, just use the Router on startRunning call.
 
-```
+```groovy
 class MyRouter extends SimpleRouter {
 	MyRouter() {
 		attach("/messages", MessagesResource.class)
