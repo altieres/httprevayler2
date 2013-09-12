@@ -1,9 +1,9 @@
 package httprevayler.samples.a02_todo
 
-import httprevayler.src.basis.BusinessException
 import httprevayler.src.basis.PrevalentServer
 import httprevayler.src.basis.SimpleResource
 import httprevayler.src.basis.SimpleRouter
+import httprevayler.src.basis.exceptions.BusinessException;
 
 class TodoServer {
 	static void main(String[] args) {

@@ -1,4 +1,6 @@
-package httprevayler.src.basis
+package httprevayler.src.basis.exceptions
+
+import httprevayler.src.basis.StatusCodes;
 
 class ResourceNotFoundException extends SimpleException {
 	

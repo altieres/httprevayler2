@@ -1,5 +1,7 @@
 package httprevayler.src.basis
 
+import httprevayler.src.basis.exceptions.MethodNotAllowedException;
+
 class SimpleResource {
 	
 	protected static Object domain

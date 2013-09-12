@@ -1,6 +1,7 @@
 package httprevayler.src.basis
 
 import groovy.json.JsonBuilder
+import httprevayler.src.basis.exceptions.SimpleException
 
 class ApplicationServlet {
 	
@@ -19,7 +20,7 @@ class ApplicationServlet {
 			responseData = service.run(request)
 		} catch (SimpleException ex) {
 			response.setStatus(ex.statusCode)
-			responseData = ex.message
+			responseData = ex.errorData
 		}
 		def encodedResponseData = encodeResponseData(responseData)
 		println '(' + request.method + ':' + request.uri + '): ' + encodedResponseData

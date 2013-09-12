@@ -1,4 +1,4 @@
-package httprevayler.test.basis;
+package httprevayler.test.basis.helpers;
 
 import groovyx.net.http.RESTClient
 import static groovyx.net.http.ContentType.JSON

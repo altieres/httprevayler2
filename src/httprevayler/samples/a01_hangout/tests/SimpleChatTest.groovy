@@ -6,7 +6,7 @@ import httprevayler.samples.a01_hangout.domain.Message
 import httprevayler.samples.a01_hangout.domain.User
 import httprevayler.samples.a01_hangout.resources.routing.HangoutRouter
 import httprevayler.test.basis.PrevalentTestBase
-import httprevayler.test.basis.RestClient
+import httprevayler.test.basis.helpers.RestClient;
 
 import org.junit.Test
 

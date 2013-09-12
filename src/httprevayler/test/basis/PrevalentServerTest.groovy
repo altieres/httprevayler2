@@ -2,6 +2,7 @@ package httprevayler.test.basis;
 
 import static org.junit.Assert.*
 import httprevayler.src.basis.SimpleResource
+import httprevayler.test.basis.helpers.RestClient;
 
 import org.junit.After
 import org.junit.Before

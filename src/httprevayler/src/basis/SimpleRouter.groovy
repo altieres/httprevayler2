@@ -1,5 +1,7 @@
 package httprevayler.src.basis
 
+import httprevayler.src.basis.exceptions.ResourceNotFoundException;
+
 class SimpleRouter extends SimpleResource {
 	
 	private SimpleRequest request
