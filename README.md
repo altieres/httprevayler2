@@ -2,7 +2,7 @@
 
 Httprevayler is a groovy implementation of a transparent prevalent rest server.
 
-A Jetty server is embeded to do the Http job. The prevalence is provided by Prevayler. The prevalent transparency is achieved journaling Http requests and snapshoting the domain models tree.
+A Jetty server is embedded to do the Http job. The prevalence is provided by Prevayler. The prevalent transparency is achieved journaling Http requests and snapshoting the domain models tree.
 
 # The basics
 
@@ -72,7 +72,7 @@ curl localhost:8484
 curl localhost:8484
 ```
 
-It just works, like a magick ;-)
+It just works, like a magic ;-)
 
 # Routing
 
