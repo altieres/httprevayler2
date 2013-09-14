@@ -1,31 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="HttPrevayler" default="compile" basedir=".">
+<project name="HttPrevayler" default="jar" basedir=".">
    <description>HttPrevayler</description>
 
    <property name="javac.debug" value="true" />
-   <property name="src.dir" value="src" />
+   <property name="libs.dir" value="src/httprevayler/lib" />
+   <property name="src.dir" value="src/httprevayler/src" />
    <property name="dist.dir" value="dist" />
-   <property name="classes.dir" value="classes" />
+   <property name="classes.dir" value="bin" />
    <property name="javadoc.dir" value="${dist.dir}/javadoc" />
 
    <property name="jar.name" value="httprevayler-2beta.jar" />
    <property name="jar.filesonly" value="true" />
 
-   <path id="httprevayler.classpath" />
+   <path id="httprevayler.classpath">
+       <fileset dir="${libs.dir}" includes="**/*.jar" />
+   </path>
 
-   <target name="-init">
-      <mkdir dir="${classes.dir}" />
-      <mkdir dir="${dist.dir}" />
+   <target name="init.groovy.tasks">
+       <taskdef
+               name="groovyc"
+               classname="org.codehaus.groovy.ant.Groovyc"
+               classpathref="httprevayler.classpath" />  
    </target>
 
-   <target name="compile"
-           description="Compile the code."
-           depends="-init">
-      <javac srcdir="${src.dir}"
-             destdir="${classes.dir}"
-             classpathref="httprevayler.classpath"
-             debug="${javac.debug}"
-             includeantruntime="false" />
+   <target name="init" depends="init.groovy.tasks">
+       <tstamp />
+       <mkdir dir="${classes.dir}" />
+       <mkdir dir="${dist.dir}" />
+   </target> 
+
+   <target name="compile" depends="init">
+       <groovyc
+               srcdir="${src.dir}"
+               includes="**/*.groovy"
+               excludes="**/*Test*"
+               destdir="${classes.dir}"
+               classpathref="httprevayler.classpath" />
    </target>
 
    <target name="jar"

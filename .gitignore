@@ -3,6 +3,6 @@
 .metadata/
 .settings/
 *.class
-bin
+dist
 Prevalence/
 
