@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="HttPrevayler" default="compile" basedir=".">
+   <description>HttPrevayler</description>
+
+   <property name="javac.debug" value="true" />
+   <property name="src.dir" value="src" />
+   <property name="dist.dir" value="dist" />
+   <property name="classes.dir" value="classes" />
+   <property name="javadoc.dir" value="${dist.dir}/javadoc" />
+
+   <property name="jar.name" value="httprevayler-2beta.jar" />
+   <property name="jar.filesonly" value="true" />
+
+   <path id="httprevayler.classpath" />
+
+   <target name="-init">
+      <mkdir dir="${classes.dir}" />
+      <mkdir dir="${dist.dir}" />
+   </target>
+
+   <target name="compile"
+           description="Compile the code."
+           depends="-init">
+      <javac srcdir="${src.dir}"
+             destdir="${classes.dir}"
+             classpathref="httprevayler.classpath"
+             debug="${javac.debug}"
+             includeantruntime="false" />
+   </target>
+
+   <target name="jar"
+           description="Package compiled classes into JAR file"
+           depends="compile">
+      <jar destfile="${dist.dir}/${jar.name}"
+           basedir="${classes.dir}"
+           filesonly="${jar.filesonly}">
+      </jar>
+   </target>
+
+   <target name="all"
+           description="Compile Java source, assemble JAR, and generate documentation"
+           depends="jar, javadoc" />
+
+   <target name="javadoc" description="Generate Javadoc-based documentation">
+      <mkdir dir="${javadoc.dir}" />
+      <javadoc doctitle="Httprevayller"
+               destdir="${javadoc.dir}"
+               sourcepath="${src.dir}"
+               classpathref="httprevayler.classpath"
+               private="true"
+               author="Altieres R. Lopes" />
+   </target>
+
+   <target name="clean" description="Remove generated artifacts.">
+      <delete dir="${classes.dir}" />
+      <delete dir="${dist.dir}" />
+   </target>
+
+</project>

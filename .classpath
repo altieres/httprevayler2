@@ -13,7 +13,6 @@
 	<classpathentry kind="lib" path="src/httprevayler/lib/httpclient/commons-collections-3.2.1.jar"/>
 	<classpathentry kind="lib" path="src/httprevayler/lib/groovy-all-2.1.2.jar"/>
 	<classpathentry kind="lib" path="src/httprevayler/lib/javax.servlet.jar"/>
-	<classpathentry kind="lib" path="src/httprevayler/lib/lib/ant.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
