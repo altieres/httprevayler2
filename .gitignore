@@ -2,7 +2,9 @@
 .groovy/
 .metadata/
 .settings/
+.DS_Store
 *.class
+bin
 dist
 Prevalence/
 
