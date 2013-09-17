@@ -1,5 +1,7 @@
 package httprevayler.src.basis
 
+import java.io.Serializable;
+
 import groovy.json.JsonBuilder;
 import groovy.json.JsonSlurper;
 
@@ -9,6 +11,8 @@ import org.eclipse.jetty.jmx.ObjectMBean;
 
 class SimpleRequest implements Serializable {
 
+	private static final long serialVersionUID = -7569547090009026388L;
+	
 	def method, url, uri
 	Map<String, String[]> parameterMap
 	// TODO: transient or static?!
