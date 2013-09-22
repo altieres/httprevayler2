@@ -7,6 +7,7 @@ import httprevayler.src.basis.SimpleResource
 import httprevayler.src.basis.SimpleResponseDummy
 import httprevayler.src.basis.SimpleRouter
 import httprevayler.src.basis.StatusCodes
+import httprevayler.test.basis.helpers.MapableSimpleRequest
 
 import org.junit.Test
 
@@ -17,7 +18,7 @@ class StatusCodesTest {
 	void shouldRespond200OKByDefault() {
 		def application = new ApplicationServlet(new App(), new MyRouter())
 		def response = new SimpleResponseDummy()
-		application.service(new SimpleRequest(method:'GET', uri:'/gettable'), response)
+		application.service(new MapableSimpleRequest(method:'GET', uri:'/gettable'), response)
 		assertEquals('"getted!"', response.wroteData)
 		assertEquals(StatusCodes.OK, response.status)
 	}
@@ -26,7 +27,7 @@ class StatusCodesTest {
 	void shouldRespond201CreatedOnPut() {
 		def application = new ApplicationServlet(new App(), new MyRouter())
 		def response = new SimpleResponseDummy()
-		application.service(new SimpleRequest(method:'PUT', uri:'/puttable'), response)
+		application.service(new MapableSimpleRequest(method:'PUT', uri:'/puttable'), response)
 		assertEquals('"putted!"', response.wroteData)
 		assertEquals(StatusCodes.CREATED, response.status)
 	}
@@ -35,7 +36,7 @@ class StatusCodesTest {
 	void shouldRespond404NotFoundOnNoRoute() {
 		def application = new ApplicationServlet(new App(), new MyRouter())
 		def response = new SimpleResponseDummy()
-		application.service(new SimpleRequest(method:'GET', uri:'/innexistent'), response)
+		application.service(new MapableSimpleRequest(method:'GET', uri:'/innexistent'), response)
 		assertEquals('"/innexistent resource not found."', response.wroteData)
 		assertEquals(StatusCodes.NOT_FOUND, response.status)
 	}
@@ -44,7 +45,7 @@ class StatusCodesTest {
 	void shouldRespond405MethodNotAllowedOnNoMethod() {
 		def application = new ApplicationServlet(new App(), new MyRouter())
 		def response = new SimpleResponseDummy()
-		application.service(new SimpleRequest(method:'POST', uri:'/gettable'), response)
+		application.service(new MapableSimpleRequest(method:'POST', uri:'/gettable'), response)
 		assertEquals('"POST method not allowed."', response.wroteData)
 		assertEquals(StatusCodes.METHOD_NOT_ALLOWED, response.status)
 	}

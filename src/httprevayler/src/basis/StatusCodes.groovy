@@ -8,6 +8,7 @@ class StatusCodes {
 	static NOT_FOUND = Response.SC_NOT_FOUND
 	static METHOD_NOT_ALLOWED = Response.SC_METHOD_NOT_ALLOWED
 	static BAD_REQUEST = Response.SC_BAD_REQUEST
+	static UNAUTHORIZED = Response.SC_UNAUTHORIZED
 	
 	static defaultFor(String method) {
 		method.toLowerCase() == 'put' ? CREATED : OK

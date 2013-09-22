@@ -14,6 +14,7 @@ class RestClient {
 	void get(Closure closure) {
 		def http = new RESTClient(url)
 		def args = [requestContentType:JSON, path:path]
+		println args
 		closure.call(http.get(args))
 	}
 	

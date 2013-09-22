@@ -6,6 +6,7 @@ import httprevayler.src.basis.SimpleRequest
 import httprevayler.src.basis.SimpleResource
 import httprevayler.src.basis.SimpleResponse
 import httprevayler.src.basis.exceptions.BusinessException
+import httprevayler.test.basis.helpers.MapableSimpleRequest
 
 import org.junit.Test
 
@@ -18,7 +19,7 @@ class BusinessExceptionTest {
 				throw new BusinessException(['error1':'message1', 'error2':'message2']);
 			}
 		})
-		def request = new SimpleRequest(method: 'get')
+		def request = new MapableSimpleRequest(method: 'get')
 		def response = new SimpleResponse() {
 			def data
 			public void setHeader(String header, String value) {}

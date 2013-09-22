@@ -4,7 +4,6 @@ import httprevayler.src.basis.exceptions.ResourceNotFoundException;
 
 class SimpleRouter extends SimpleResource {
 	
-	private SimpleRequest request
 	private Map routes = [:]
 	
 	List resourcesPackages = []
@@ -20,12 +19,6 @@ class SimpleRouter extends SimpleResource {
 	
 	void attach(String uri, Class clazz) {
 		routes << [(uri):clazz]
-	}
-	
-	protected resourceToCallOld() {
-		if(routes[request.uri] != null)
-			return routes[request.uri]
-		return resourceGuess()
 	}
 	
 	protected resourceToCall() {

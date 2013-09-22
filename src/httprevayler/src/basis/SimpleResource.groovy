@@ -17,7 +17,7 @@ class SimpleResource {
 				case "PUT": return doPut()
 				case "DELETE": return doDelete()
 			}
-		} catch (MissingMethodException ex) { }
+		} catch (MissingMethodException ex) { ex.printStackTrace() }
 		
 		throw new MethodNotAllowedException(request.method)
 	}

@@ -5,7 +5,7 @@ import org.prevayler.SureTransactionWithQuery
 
 class SimpleTransaction extends SimpleCommand implements SureTransactionWithQuery {
 	
-	private static final long serialVersionUID = -4344213609197057878L;
+	private static final long serialVersionUID = 1L;
 
 	public SimpleTransaction(SimpleRequest request, SimpleResponse response) {
 		super(request, response);

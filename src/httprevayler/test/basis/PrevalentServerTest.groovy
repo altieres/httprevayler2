@@ -11,20 +11,17 @@ import org.junit.Test
 
 class PrevalentServerTest extends PrevalentTestBase {
 	
-	@Before
-	public void setUp() {
+	@Before public void setUp() {
 		clearServerData()
 		startServer()
 	}
 	
-	@After
-	public void tearDown() {
+	@After public void tearDown() {
 		stopServer()
 		clearServerData()
 	}
 	
-	@Test
-	void shouldRespondToGet() {
+	@Test void shouldRespondToGet() {
 		def called = 0
 		new RestClient("http://localhost:8484/", "something").get { response ->
 			assert response.data.name == "Altz"
@@ -33,8 +30,7 @@ class PrevalentServerTest extends PrevalentTestBase {
 		assert called == 1
 	}
 	
-	//@Test
-	void shouldPersist() {
+	@Test void shouldPersist() {
 		new RestClient("http://localhost:8484/", "something").get { response ->
 			assert response.data.name == 'Altz'
 			called += 1
