@@ -12,11 +12,24 @@ class SimpleRequest implements Serializable {
 	Map<String, String[]> parameterMap
 	Map<String, String> headersMap = [:]
 	// TODO: transient or static?!
-	transient Map<String, String> namedParamsMap = [:]
+	// transient properties can't be instantiated here
+	protected transient Map parsedMap
+	protected transient Map<String, String> namedParamsMap
+	
+	public Map getParsedMap() {
+		if (parsedMap == null) parsedMap = [:]
+		parsedMap
+	}
+	
+	public Map getNamedParamsMap() {
+		if (namedParamsMap == null) namedParamsMap = [:]
+		namedParamsMap
+	}
 	
 	public SimpleRequest() { }
 	
 	public SimpleRequest(def request) {
+		parsedMap = [:]
 		method = request.getMethod()
 		url = request.getRequestURL()
 		uri = request.getRequestURI()
