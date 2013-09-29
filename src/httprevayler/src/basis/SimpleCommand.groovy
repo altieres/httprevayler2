@@ -15,6 +15,7 @@ class SimpleCommand implements Serializable {
 	}
 	
 	protected Object process(Object application, Date date) {
+		request.parsedMap['now'] = date
 		ApplicationServletFactory.create().service(request, response)
 	}
 
