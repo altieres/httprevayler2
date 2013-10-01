@@ -38,7 +38,7 @@ class SimpleRequest implements Serializable {
 			headersMap += [(name):request.getHeader(name)]
 		}
 		
-		if (request.getHeader('Content-Type') == 'application/json')
+		if (request.getHeader('Content-Type')?.startsWith('application/json'))
 			parameterMap = mapJsonData(request.getReader())
 		else
 			parameterMap = request.getParameterMap()
