@@ -2,8 +2,6 @@ package httprevayler.src.basis
 
 import groovy.json.JsonSlurper
 
-import javax.servlet.http.HttpServletRequest
-
 class SimpleRequest implements Serializable {
 	
 	private static final long serialVersionUID = 1L
@@ -40,8 +38,10 @@ class SimpleRequest implements Serializable {
 		
 		if (request.getHeader('Content-Type')?.startsWith('application/json'))
 			parameterMap = mapJsonData(request.getReader())
-		else
-			parameterMap = request.getParameterMap()
+		else {
+			parameterMap = [:]
+			parameterMap << request.getParameterMap()
+		}
 	}
 		
 	public Map<String, String[]> mapJsonData(BufferedReader reader) {
