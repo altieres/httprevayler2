@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="HttPrevayler" default="jar" basedir=".">
+<project name="HttPrevayler" default="all" basedir=".">
    <description>HttPrevayler</description>
 
    <property name="javac.debug" value="true" />
-   <property name="libs.dir" value="src/httprevayler/lib" />
-   <property name="src.dir" value="src/httprevayler/src" />
-   <property name="dist.dir" value="dist" />
-   <property name="classes.dir" value="bin" />
-   <property name="javadoc.dir" value="${dist.dir}/javadoc" />
+   <property name="httprevayler.libs" value="src/httprevayler/lib" />
+   <property name="httprevayler.src" value="src" />
+   <property name="httprevayler.dist" value="dist" />
+   <property name="httprevayler.classes" value="bin" />
+   <property name="httprevayler.javadoc" value="${httprevayler.dist}/javadoc" />
 
-   <property name="jar.name" value="httprevayler-2beta.jar" />
-   <property name="jar.filesonly" value="true" />
+   <property name="httprevayler.jar.name" value="httprevayler-2beta.jar" />
+   <property name="httprevayler.jar.includes" value="httprevayler/src/**/*" />
+   <property name="httprevayler.jar.filesonly" value="true" />
 
    <path id="httprevayler.classpath">
-       <fileset dir="${libs.dir}" includes="**/*.jar" />
+       <fileset dir="${httprevayler.libs}" includes="**/*.jar" />
    </path>
 
    <target name="init.groovy.tasks">
@@ -25,45 +26,46 @@
 
    <target name="init" depends="init.groovy.tasks">
        <tstamp />
-       <mkdir dir="${classes.dir}" />
-       <mkdir dir="${dist.dir}" />
+       <mkdir dir="${httprevayler.classes}" />
+       <mkdir dir="${httprevayler.dist}" />
    </target> 
 
    <target name="compile" depends="init">
        <groovyc
-               srcdir="${src.dir}"
+               srcdir="${httprevayler.src}"
                includes="**/*.groovy"
                excludes="**/*Test*"
-               destdir="${classes.dir}"
+               destdir="${httprevayler.classes}"
                classpathref="httprevayler.classpath" />
    </target>
 
    <target name="jar"
            description="Package compiled classes into JAR file"
            depends="compile">
-      <jar destfile="${dist.dir}/${jar.name}"
-           basedir="${classes.dir}"
-           filesonly="${jar.filesonly}">
+      <jar destfile="${httprevayler.dist}/${httprevayler.jar.name}"
+           basedir="${httprevayler.classes}"
+           includes="${httprevayler.jar.includes}"
+           filesonly="${httprevayler.jar.filesonly}">
       </jar>
    </target>
 
    <target name="all"
            description="Compile Java source, assemble JAR, and generate documentation"
-           depends="jar, javadoc" />
+           depends="clean,jar" />
 
    <target name="javadoc" description="Generate Javadoc-based documentation">
-      <mkdir dir="${javadoc.dir}" />
+      <mkdir dir="${httprevayler.javadoc}" />
       <javadoc doctitle="Httprevayller"
-               destdir="${javadoc.dir}"
-               sourcepath="${src.dir}"
+               destdir="${httprevayler.javadoc}"
+               sourcepath="${httprevayler.src}"
                classpathref="httprevayler.classpath"
                private="true"
                author="Altieres R. Lopes" />
    </target>
 
    <target name="clean" description="Remove generated artifacts.">
-      <delete dir="${classes.dir}" />
-      <delete dir="${dist.dir}" />
+      <delete dir="${httprevayler.classes}" />
+      <delete dir="${httprevayler.dist}" />
    </target>
 
 </project>
