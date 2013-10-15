@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="HttPrevayler" default="all" basedir=".">
+<project name="HttPrevayler" default="test">
    <description>HttPrevayler</description>
 
    <property name="javac.debug" value="true" />
@@ -15,6 +15,11 @@
 
    <path id="httprevayler.classpath">
        <fileset dir="${httprevayler.libs}" includes="**/*.jar" />
+   </path>
+
+   <path id="httprevayler.classpath.test">
+       <path refid="httprevayler.classpath" />
+       <pathelement location="${httprevayler.classes}" />
    </path>
 
    <target name="init.groovy.tasks">
@@ -34,7 +39,6 @@
        <groovyc
                srcdir="${httprevayler.src}"
                includes="**/*.groovy"
-               excludes="**/*Test*"
                destdir="${httprevayler.classes}"
                classpathref="httprevayler.classpath" />
    </target>
@@ -45,13 +49,21 @@
       <jar destfile="${httprevayler.dist}/${httprevayler.jar.name}"
            basedir="${httprevayler.classes}"
            includes="${httprevayler.jar.includes}"
+           excludes="**/*Test*"
            filesonly="${httprevayler.jar.filesonly}">
       </jar>
    </target>
-
-   <target name="all"
-           description="Compile Java source, assemble JAR, and generate documentation"
-           depends="clean,jar" />
+   
+   <target name="test" depends="clean,compile">
+     <junit failureProperty="test.failure">
+       <classpath refid="httprevayler.classpath.test" />
+       <batchtest>
+          <fileset dir="${httprevayler.classes}" includes="**/*Test.class" />
+       </batchtest>
+       <formatter type="brief" usefile="false"/>
+     </junit>
+     <fail message="test failed" if="test.failure" />
+   </target>
 
    <target name="javadoc" description="Generate Javadoc-based documentation">
       <mkdir dir="${httprevayler.javadoc}" />
