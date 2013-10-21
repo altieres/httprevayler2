@@ -1,6 +1,6 @@
 package httprevayler.src.basis
 
-import httprevayler.src.basis.exceptions.MethodNotAllowedException;
+import httprevayler.src.basis.exceptions.MethodNotAllowedException
 
 class SimpleResource {
 	

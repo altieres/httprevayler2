@@ -45,7 +45,7 @@
 
    <target name="jar"
            description="Package compiled classes into JAR file"
-           depends="compile">
+           depends="clean,compile">
       <jar destfile="${httprevayler.dist}/${httprevayler.jar.name}"
            basedir="${httprevayler.classes}"
            includes="${httprevayler.jar.includes}"
