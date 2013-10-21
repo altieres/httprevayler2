@@ -9,17 +9,10 @@ class SimpleResource {
 	
 	def run(SimpleRequest request) {
 		this.request = request
-		
-		try {
-			switch (request.method) {
-				case "GET": return doGet()
-				case "POST": return doPost()
-				case "PUT": return doPut()
-				case "DELETE": return doDelete()
-			}
-		} catch (MissingMethodException ex) { }
-		
-		throw new MethodNotAllowedException(request.method)
+		def methodToRun = "do${request.method.toLowerCase().capitalize()}"
+		if (!this.respondsTo(methodToRun))
+			throw new MethodNotAllowedException(request.method)
+		this."${methodToRun}"()
 	}
 	
 }
