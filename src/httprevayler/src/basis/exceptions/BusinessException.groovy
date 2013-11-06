@@ -9,7 +9,7 @@ class BusinessException extends SimpleException {
 	}
 	
 	public BusinessException(Map errors) {
-		super("errors", StatusCodes.BAD_REQUEST)
+		super(errors.toString(), StatusCodes.BAD_REQUEST)
 		this.errorData = errors
 	}
 
