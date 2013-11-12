@@ -1,7 +1,8 @@
 package httprevayler.src.basis
 
-import groovy.json.JsonBuilder
 import httprevayler.src.basis.exceptions.SimpleException
+
+import com.fasterxml.jackson.databind.ObjectMapper
 
 class ApplicationServlet {
 	
@@ -28,8 +29,8 @@ class ApplicationServlet {
 	}
 	
 	public String encodeResponseData(responseData) {
-		JsonBuilder builder = new JsonBuilder(responseData);
-		builder.toString();
+		ObjectMapper mapper = new ObjectMapper()
+		mapper.writeValueAsString(responseData)
 	}
 	
 }

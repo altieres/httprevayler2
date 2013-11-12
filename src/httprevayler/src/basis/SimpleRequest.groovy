@@ -1,6 +1,6 @@
 package httprevayler.src.basis
 
-import groovy.json.JsonSlurper
+import com.fasterxml.jackson.databind.ObjectMapper
 
 class SimpleRequest implements Serializable {
 	
@@ -45,7 +45,8 @@ class SimpleRequest implements Serializable {
 	}
 		
 	public Map<String, String[]> mapJsonData(BufferedReader reader) {
-		return new JsonSlurper().parse(reader)
+		ObjectMapper mapper = new ObjectMapper()
+		mapper.readValue(reader, Object)
 	}
 
 }

@@ -27,6 +27,7 @@ class PrevalentServlet {
 	
 	public service(HttpServletRequest request, HttpServletResponse response) {
 		request.setCharacterEncoding("UTF-8")
+		response.setCharacterEncoding("UTF-8")
 		service(new SimpleRequest(request), new SimpleResponseImpl(response))
 	}
 	
