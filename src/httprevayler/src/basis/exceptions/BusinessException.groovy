@@ -6,6 +6,7 @@ class BusinessException extends SimpleException {
 	
 	public BusinessException(String message) {
 		super(message, StatusCodes.BAD_REQUEST)
+		this.errorData = ['error': message]
 	}
 	
 	public BusinessException(Map errors) {
