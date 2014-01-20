@@ -1,7 +1,10 @@
 package httprevayler.test.basis;
 
 import static org.junit.Assert.*
+import httprevayler.src.basis.SimpleRequest
 import httprevayler.src.basis.SimpleResource
+import httprevayler.src.basis.SimpleResponse
+import httprevayler.src.basis.SimpleResponseDummy
 import httprevayler.src.basis.exceptions.MethodNotAllowedException
 import httprevayler.test.basis.helpers.MapableSimpleRequest
 
@@ -38,6 +41,14 @@ class SimpleResourceTest {
 			fail 'Expected exception not thrown'
 		} catch (MissingMethodException ex){ }
 	}
+	
+	@Test
+	void shouldBeAbleToSetHeaders() {
+		def resource = new SimpleResourceDummy()
+		def response = new SimpleResponseDummy()
+		resource.run(new MapableSimpleRequest(method:"OPTIONS"), response)
+		assert response.settedHeaders == ['a':'b']
+	}
 
 }
 
@@ -54,4 +65,13 @@ class SimpleResourceDummy extends SimpleResource {
 	def doPut() {
 		this.inexistent()
 	}
+	
+	def doOptions() {
+		response.setHeader('a', 'b')
+	}
+	
+	def run(SimpleRequest request) {
+		run(request, null)
+	}
+	
 }

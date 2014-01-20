@@ -1,6 +1,6 @@
 package httprevayler.src.basis
 
-import httprevayler.src.basis.exceptions.ResourceNotFoundException;
+import httprevayler.src.basis.exceptions.ResourceNotFoundException
 
 class SimpleRouter extends SimpleResource {
 	
@@ -8,13 +8,14 @@ class SimpleRouter extends SimpleResource {
 	
 	List resourcesPackages = []
 
-	def run(SimpleRequest request) {
+	def run(SimpleRequest request, SimpleResponse response) {
 		this.request = request
+		this.response = response
 		def resourceToCall = resourceToCall()
 		if (resourceToCall == null)
 			throwNotFound()
 		else
-			resourceToCall.newInstance().run(request)
+			resourceToCall.newInstance().run(request, response)
 	}
 	
 	void attach(String uri, Class clazz) {

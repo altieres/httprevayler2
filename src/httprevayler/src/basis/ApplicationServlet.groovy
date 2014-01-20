@@ -17,15 +17,19 @@ class ApplicationServlet {
 		def responseData = null
 		response.setHeader("content-type", "application/json")
 		response.setStatus(StatusCodes.defaultFor(request.method))
+		
 		try {
-			responseData = service.run(request)
+			responseData = service.run(request, response)
 		} catch (SimpleException ex) {
 			response.setStatus(ex.statusCode)
 			responseData = ex.errorData
 		}
-		def encodedResponseData = encodeResponseData(responseData)
-		println '(' + request.method + ':' + request.uri + '): ' + encodedResponseData
-		response.writeResponse(encodedResponseData)
+		
+		if (responseData != null) {
+			def encodedResponseData = encodeResponseData(responseData)
+			println '(' + request.method + ':' + request.uri + '): ' + encodedResponseData
+			response.writeResponse(encodedResponseData)
+		}
 	}
 	
 	public String encodeResponseData(responseData) {
