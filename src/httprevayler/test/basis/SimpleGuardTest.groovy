@@ -4,6 +4,7 @@ import static org.junit.Assert.*
 import httprevayler.src.basis.SimpleGuard
 import httprevayler.src.basis.SimpleRequest
 import httprevayler.src.basis.SimpleResource
+import httprevayler.src.basis.SimpleResponse;
 import httprevayler.src.basis.exceptions.UnauthorizedException
 import httprevayler.test.basis.helpers.MapableSimpleRequest
 
@@ -19,12 +20,12 @@ class SimpleGuardTest {
 	}
 	
 	@Test void shouldGrantAccess() {
-		assert simpleGuard.run(new MapableSimpleRequest(uri:"/fooz")) == 'ran!'
+		assert simpleGuard.run(new MapableSimpleRequest(uri:"/fooz"), null) == 'ran!'
 	}
 	
 	@Test void shouldDenyAccess() {
 		try {
-			simpleGuard.run(new MapableSimpleRequest(uri:"/baaz"))
+			simpleGuard.run(new MapableSimpleRequest(uri:"/baaz"), null)
 			fail 'expected exception not thrown'
 		} catch(UnauthorizedException ex) { }
 	}
@@ -36,5 +37,5 @@ class SimpleDummyGuard extends SimpleGuard {
 }
 
 class BarResource extends SimpleResource {
-	def run(SimpleRequest request) { 'ran!' }
+	def run(SimpleRequest request, SimpleResponse response) { 'ran!' }
 }
