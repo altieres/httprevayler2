@@ -4,10 +4,11 @@ import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
 import org.eclipse.jetty.server.Server
-import org.eclipse.jetty.server.handler.AbstractHandler
+import org.eclipse.jetty.server.ServerConnector
 import org.eclipse.jetty.server.handler.HandlerList
+import org.eclipse.jetty.server.handler.HandlerWrapper
 import org.eclipse.jetty.server.handler.ResourceHandler
-import org.eclipse.jetty.server.nio.SelectChannelConnector
+import org.eclipse.jetty.servlets.gzip.GzipHandler
 
 class PrevalentServer {
 	private int port
@@ -31,18 +32,23 @@ class PrevalentServer {
 		server = new Server()
 		prevalentServlet = new PrevalentServlet(domain, service)
 		
-		SelectChannelConnector connector = new SelectChannelConnector()
+		ServerConnector connector = new ServerConnector(server)
 		connector.setPort(port)
 		server.addConnector(connector)
 		
-		AbstractHandler handler = new AbstractHandler() { void handle(String target, org.eclipse.jetty.server.Request baseRequest, HttpServletRequest request, HttpServletResponse response) {
+		HandlerWrapper handler = new HandlerWrapper() { void handle(String target, org.eclipse.jetty.server.Request baseRequest, HttpServletRequest request, HttpServletResponse response) {
 			baseRequest.setHandled(true)
 			prevalentServlet.service(request, response)
 		}}
 		
-		handlers.addHandler(handler)
-		server.setHandler(handlers)
+		handlers.addHandler(new GzipHandler().with {
+			setHandler(handler)
+			setMimeTypes("application/json")
+			setServer(server)
+			it
+		})
 
+		server.setHandler(handlers)
 		server.start()
 	}
 	
