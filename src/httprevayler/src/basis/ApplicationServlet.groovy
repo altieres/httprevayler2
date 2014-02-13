@@ -25,16 +25,12 @@ class ApplicationServlet {
 			responseData = ex.errorData
 		}
 		
-		if (responseData != null) {
-			def encodedResponseData = encodeResponseData(responseData)
-//			println '(' + request.method + ':' + request.uri + '): ' + encodedResponseData
-			response.writeResponse(encodedResponseData)
-		}
+		if (responseData != null) writeEncoded(response, responseData)
 	}
 	
-	public String encodeResponseData(responseData) {
+	public String writeEncoded(response, responseData) {
 		ObjectMapper mapper = new ObjectMapper()
-		mapper.writeValueAsString(responseData)
+		mapper.writeValue(response.writer, responseData)
 	}
 	
 }

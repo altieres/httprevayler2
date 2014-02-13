@@ -22,4 +22,9 @@ class SimpleResponseImpl implements SimpleResponse {
 	public void setStatus(int status) {
 		response.setStatus(status)
 	}
+	
+	public PrintWriter getWriter() {
+		response.writer
+	}
+	
 }

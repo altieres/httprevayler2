@@ -1,5 +1,7 @@
 package httprevayler.src.basis
 
+import java.io.PrintWriter;
+
 class SimpleResponseDummy implements SimpleResponse {
 
 	def wroteData = null
@@ -19,6 +21,11 @@ class SimpleResponseDummy implements SimpleResponse {
 	@Override
 	public void setStatus(int status) {
 		this.status = status
+	}
+
+	@Override
+	public PrintWriter getWriter() {
+		return null;
 	}
 
 }
