@@ -25,12 +25,7 @@ class ApplicationServlet {
 			responseData = ex.errorData
 		}
 		
-		if (responseData != null) writeEncoded(response, responseData)
-	}
-	
-	public String writeEncoded(response, responseData) {
-		ObjectMapper mapper = new ObjectMapper()
-		mapper.writeValue(response.writer, responseData)
+		if (responseData != null) response.writeEncoded(responseData)
 	}
 	
 }
