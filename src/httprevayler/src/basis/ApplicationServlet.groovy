@@ -27,7 +27,7 @@ class ApplicationServlet {
 		
 		if (responseData != null) {
 			def encodedResponseData = encodeResponseData(responseData)
-			println '(' + request.method + ':' + request.uri + '): ' + encodedResponseData
+//			println '(' + request.method + ':' + request.uri + '): ' + encodedResponseData
 			response.writeResponse(encodedResponseData)
 		}
 	}

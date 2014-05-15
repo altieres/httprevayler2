@@ -23,6 +23,7 @@ class PrevalentServlet {
 		factory.configurePrevalentSystem(domain)
 		factory.configureTransactionFiltering(false)
 		prevayler = factory.create()
+		ApplicationServletFactory.configureDomain(prevayler.prevalentSystem())
 	}
 	
 	public service(HttpServletRequest request, HttpServletResponse response) {
@@ -32,10 +33,20 @@ class PrevalentServlet {
 	}
 	
 	public service(SimpleRequest request, SimpleResponse response) {
-		if (request.getMethod().equals("GET"))
-			prevayler.execute(new SimpleQuery(request, response))
-		else
-			prevayler.execute(new SimpleTransaction(request, response))
+		if (request.getMethod().equals("SNAP")) {
+			try {
+				println 'taking...'
+				prevayler.takeSnapshot()
+			} catch(ex) {
+				println 'ex...'
+				ex.printStackTrace()
+			}
+		} else {
+			if (request.getMethod().equals("GET"))
+				prevayler.execute(new SimpleQuery(request, response))
+			else
+				prevayler.execute(new SimpleTransaction(request, response))
+		}
 	}
 
 }

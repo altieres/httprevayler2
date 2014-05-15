@@ -33,6 +33,15 @@ class SimpleRouterTest {
 		assert router.run(request) == FooResource
 		assert request.namedParamsMap == ['id':'3', 'counter':'5']
 	}
+	
+	@Test
+	void shouldParseQueryStringWithUnderline() {
+		def router = new SimpleRouterDummy()
+		def request = new MapableSimpleRequest(uri:"/foo/fo_oz/3-3/5")
+		router.attach("/foo/fo_oz/:id/:counter", FooResource)
+		assert router.run(request) == FooResource
+		assert request.namedParamsMap == ['id':'3-3', 'counter':'5']
+	}
 
 }
 

@@ -25,7 +25,7 @@ class SimpleRouter extends SimpleResource {
 	protected resourceToCall() {
 		for (def route : routes) {
 			def routeMatcher = (route.key =~ /\:(\w+)/)
-			def routePattern = '^' + routeMatcher.replaceAll('(?<$1>\\\\w+)').replace('/', '\\/') + '\$'
+			def routePattern = '^' + routeMatcher.replaceAll('(?<$1>[^\\/]+)').replace('/', '\\/') + '\$'
 			
 			def matcher = (request.uri =~ routePattern)
 			if (matcher.matches()) {
