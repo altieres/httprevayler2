@@ -10,7 +10,6 @@
 	<classpathentry kind="lib" path="src/httprevayler/lib/httpclient/json-lib-2.4-jdk15.jar"/>
 	<classpathentry kind="lib" path="src/httprevayler/lib/httpclient/resolver.jar"/>
 	<classpathentry kind="lib" path="src/httprevayler/lib/httpclient/commons-collections-3.2.1.jar"/>
-	<classpathentry kind="lib" path="src/httprevayler/lib/groovy-all-2.1.2.jar"/>
 	<classpathentry kind="lib" path="src/httprevayler/lib/jackson-core-2.2.0.jar"/>
 	<classpathentry kind="lib" path="src/httprevayler/lib/jackson-databind-2.2.3.jar"/>
 	<classpathentry kind="lib" path="src/httprevayler/lib/jackson-annotations-2.2.3.jar"/>
@@ -22,8 +21,9 @@
 	<classpathentry kind="lib" path="src/httprevayler/lib/jetty/jetty-servlet-9.1.1.v20140108.jar"/>
 	<classpathentry kind="lib" path="src/httprevayler/lib/jetty/jetty-servlets-9.1.1.v20140108.jar"/>
 	<classpathentry kind="lib" path="src/httprevayler/lib/jetty/jetty-util-9.1.1.v20140108.jar"/>
-	<classpathentry kind="lib" path="src/httprevayler/lib/servlet-api-3.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry exported="true" kind="con" path="GROOVY_DSL_SUPPORT"/>
+	<classpathentry kind="lib" path="src/httprevayler/lib/servlet-api-3.1.jar"/>
+	<classpathentry kind="lib" path="src/httprevayler/lib/groovy-all-2.3.7-indy.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
